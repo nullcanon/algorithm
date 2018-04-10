@@ -1,4 +1,6 @@
 
+//自己实现C语言常用的string库函数
+////////////////////////////////
 int my_strlen(const char* dest)
 {
 	if(NULL == dest)
