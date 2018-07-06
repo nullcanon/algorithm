@@ -295,32 +295,31 @@ void MergeSort(int* arr, int sz)
 
 //归并排序非递归
 //按照递归程序执行的思路来
-//void MergeSortNor(int*arr ,int sz)
-//{
-//	int* tmp = new int[sz];
-//	int gap = 1;
-//	while (1)
-//	{
-//		for (int i = 0; i < sz; i+=(gap<<1))
-//		{
-//			int mid = i + ((i+gap - i) >> 1);
-//
-//			int n = i+gap*2-1;	
-//
-//			if (n >= sz)
-//			{
-//				mid = i-1;
-//				n = sz - 1;
-//				MergeArr(arr, 0, mid, n, tmp);
-//				return;
-//			}		
-//			MergeArr(arr, i, mid, n, tmp);
-//		}
-//		gap <<= 1;
-//	
-//	}
-//	delete[] tmp;
-//}
+void MergeSortNor(int*arr ,int sz)
+{
+	int* tmp = new int[sz];
+	int gap = 1;
+	while (gap < sz)
+	{
+		for (int i = 0; i < sz; i+=(gap<<1))
+		{
+			int left = i;
+			int mid = left + gap-1;
+			int right = mid + gap;
+
+			if (mid >= sz)
+				mid = sz-1;
+
+			if (right >= sz)
+				right = sz-1;
+
+			MergeArr(arr, left, mid, right, tmp);
+		}
+		gap <<= 1;
+	
+	}
+	delete[] tmp;
+}
 
 /**************************************/
 
